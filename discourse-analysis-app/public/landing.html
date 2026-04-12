@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>篇章分析应用 — 入口说明</title>
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: system-ui, "Segoe UI", sans-serif; max-width: 42rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #0f172a; }
+    h1 { font-size: 1.5rem; }
+    .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0; }
+    a.btn { display: inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem; background: #2563eb; color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600; }
+    a.btn:hover { background: #1d4ed8; }
+    code { background: #e2e8f0; padding: 0.1em 0.35em; border-radius: 4px; font-size: 0.9em; }
+    .warn { border-left: 4px solid #f59e0b; padding-left: 0.75rem; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+  <h1>篇章分析三合一（Streamlit）</h1>
+  <p>本页为<strong>静态说明页</strong>。实际应用由 Python 在服务器上运行 Streamlit，界面不是单独托管的「一个 HTML 文件」。</p>
+
+  <div class="card">
+    <strong>应用入口</strong>
+    <p>部署完成后，把下面链接改成你的公网地址：</p>
+    <p><a class="btn" id="app-link" href="#">打开 Streamlit 应用</a></p>
+    <p><small>若按钮无效，请在下方脚本中填写 <code>APP_URL</code> 后重新保存本文件。</small></p>
+  </div>
+
+  <div class="card">
+    <strong>填写公网地址（仅此一处）</strong>
+    <script>
+      // 将此处改为你的 Streamlit 公网 URL，例如 https://xxx.streamlit.app 或 https://你的域名
+      const APP_URL = "https://你的子域名.streamlit.app";
+      (function () {
+        var a = document.getElementById("app-link");
+        if (APP_URL && !APP_URL.includes("你的")) {
+          a.href = APP_URL;
+        } else {
+          a.href = "#";
+          a.textContent = "请先编辑 landing.html 中的 APP_URL";
+          a.style.background = "#94a3b8";
+        }
+      })();
+    </script>
+  </div>
+
+  <div class="warn">
+    <strong>说明</strong>：EDU 对比、spaCy、fastcoref 等均在服务端执行。公网部署需满足内存与冷启动时间（首次加载模型可能较慢）。
+  </div>
+</body>
+</html>
