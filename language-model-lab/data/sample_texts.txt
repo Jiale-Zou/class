@@ -1,0 +1,8 @@
+In the early days of language modeling, researchers relied on simple counting methods.
+An n-gram model estimates the probability of a word given a short history of previous words.
+When the history becomes longer, the model can capture more local patterns, but it also faces data sparsity.
+Smoothing methods such as Laplace smoothing reduce the impact of zero counts.
+
+Neural language models learn distributed representations.
+Recurrent neural networks can process sequences and predict the next symbol step by step.
+Pretrained transformer models like BERT and GPT-2 provide strong baselines for many tasks.
